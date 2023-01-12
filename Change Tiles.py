@@ -1,26 +1,24 @@
-# На площадката пред жилищен блок трябва да се поставят плочки.
-# Площадката е с форма на квадрат със страна N метра. Плочките са широки „W“
-# метра и дълги „L“ метра. На площадката има една пейка с ширина M метра и
-# дължина O метра. Под нея не е нужно да се слагат плочки. Всяка плочка се
-# поставя за 0.2 минути.
+import math
+money = float(input())
+width = float(input())
+lenght = float(input())
+a = float(input())
+h = float(input())
+p_tile = float(input())
+p_worker = float(input())
 
-# Напишете програма, която чете от конзолата размерите на площадката, плочките
-# и пейката и пресмята колко плочки са необходими да се покрие площадката и
-# пресмята времето за поставяне на всички плочки.
+area_ground = width * lenght
+area_tile = (a*h)/2
+num_tile = math.ceil(area_ground / area_tile) + 5
+p_all_tiles = num_tile * p_tile
+all_costs = p_all_tiles + p_worker
 
-n_area = float(input())  # размерите на площадката в м
-w_block = float(input())    # ширина на плочка в м
-l_block = float(input())    # дължина на плочка в м
-m_table = float(input())    # ширина на пейка в м
-o_table = float(input())    # дължина на пейка в м
+dif_money = abs(all_costs - money)
 
-full_area = n_area**2
-table_area = m_table * o_table
-block_area = full_area - table_area
-block_1 = w_block * l_block
-num_block = block_area / block_1
-time_block = num_block * 0.2
+if all_costs <= money:
+    print(f"{dif_money:.2f} lv left.")
+else:
+    print(f"You'll need {dif_money:.2f} lv more.")
 
-print(num_block)
-print(time_block)
+
 
